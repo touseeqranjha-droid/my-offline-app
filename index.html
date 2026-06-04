@@ -1,8 +1,94 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="mobile-web-app-capable" content="yes">
-…
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GEPCO Meter Tracker</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        body {
+            background-color: #07070f;
+            color: #e2e8f0;
+            font-family: system-ui, -apple-system, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+</head>
+<body class="p-4 pb-24">
+
+    <div class="mb-6 border-b border-[#1c1c30] pb-4">
+        <div class="flex items-center gap-2">
+            <span>⚡</span>
+            <span class="text-[#4ade80] text-xs tracking-widest font-bold">GEPCO METER TRACKER</span>
+        </div>
+        <h1 class="text-xl font-extrabold mt-1">Bijli Reading Manager</h1>
+    </div>
+
+    <div id="app-content">
+        <div class="grid grid-cols-2 gap-3 mb-4">
+            <div class="bg-[#0e0e1c] border border-[#1c1c30] rounded-2xl p-4">
+                <div class="text-[#475569] text-[10px] font-bold tracking-wider">METER 1 • NEW</div>
+                <div id="m1-units" class="text-[#4ade80] text-3xl font-black font-mono mt-1">0</div>
+                <div class="text-[#475569] text-xs">units used</div>
+            </div>
+            <div class="bg-[#0e0e1c] border border-[#1c1c30] rounded-2xl p-4">
+                <div class="text-[#475569] text-[10px] font-bold tracking-wider">METER 2 • OLD</div>
+                <div id="m2-units" class="text-[#38bdf8] text-3xl font-black font-mono mt-1">0</div>
+                <div class="text-[#475569] text-xs">units used</div>
+            </div>
+        </div>
+
+        <div class="bg-[#0e0e1c] border border-[#1c1c30] rounded-2xl p-4 mb-4">
+            <span class="text-[#475569] text-[10px] font-bold tracking-widest uppercase block mb-3">⚡ Jaldi Reading Add</span>
+            <div class="mb-3">
+                <label class="text-[#475569] text-[10px] uppercase font-bold block mb-1">Tarikh</label>
+                <input type="date" id="quick-date" class="w-full bg-[#060612] border border-[#2d3748] rounded-xl px-3 py-2 text-sm outline-none">
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+                <div>
+                    <label class="text-[#4ade80] text-[10px] font-bold block mb-1">⚡ Meter 1 Reading</label>
+                    <input type="number" id="quick-m1" placeholder="Reading" class="w-full bg-[#060612] border border-[#2d3748] rounded-xl px-3 py-2 text-sm outline-none">
+                </div>
+                <div>
+                    <label class="text-[#38bdf8] text-[10px] font-bold block mb-1">🔌 Meter 2 Reading</label>
+                    <input type="number" id="quick-m2" placeholder="Reading" class="w-full bg-[#060612] border border-[#2d3748] rounded-xl px-3 py-2 text-sm outline-none">
+                </div>
+            </div>
+            <button onclick="saveQuickReadings()" class="w-full mt-4 bg-[#4ade80]/10 border border-[#4ade80] text-[#4ade80] rounded-xl py-2.5 text-sm font-bold">Save Readings</button>
+        </div>
+    </div>
+
+    <div class="fixed bottom-0 left-0 right-0 bg-[#07070f]/95 border-t border-[#1c1c30] p-2 flex justify-around backdrop-blur-md z-50">
+        <button onclick="switchTab('home')" class="flex flex-col items-center gap-1 p-2 text-[#4ade80]">
+            <span class="text-xl">🏠</span><span class="text-[10px] font-bold">Home</span>
+        </button>
+        <button onclick="switchTab('m1')" class="flex flex-col items-center gap-1 p-2 text-[#475569]">
+            <span class="text-xl">⚡</span><span class="text-[10px]">Meter 1</span>
+        </button>
+        <button onclick="switchTab('m2')" class="flex flex-col items-center gap-1 p-2 text-[#475569]">
+            <span class="text-xl">🔌</span><span class="text-[10px]">Meter 2</span>
+        </button>
+        <button onclick="switchTab('camera')" class="flex flex-col items-center gap-1 p-2 text-[#475569]">
+            <span class="text-xl">📸</span><span class="text-[10px]">Camera</span>
+        </button>
+    </div>
+
+    <script>
+        // Set Today's Date
+        document.getElementById('quick-date').value = new Date().toISOString().split('T')[0];
+
+        function switchTab(tab) {
+            alert(tab.toUpperCase() + " Tab Active! Data local storage mein save hoga.");
+        }
+
+        function saveQuickReadings() {
+            const m1 = document.getElementById('quick-m1').value;
+            const m2 = document.getElementById('quick-m2').value;
+            if(m1) document.getElementById('m1-units').innerText = m1;
+            if(m2) document.getElementById('m2-units').innerText = m2;
+            alert("Readings save ho gayin!");
+        }
+    </script>
+</body>
+  </html>
+                      
