@@ -1,0 +1,13 @@
+{
+  "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "Meter Reading Dual",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "Meter Reading Dual",
+  "start_url": "/",
+  "theme_color": "#000000",
+  "id": "com.touseeqranjha.me",
+  "description": "This apk free feature for dual Meter reading in Pakistan very creative icon clean menu optimization uniqe function"
+}
